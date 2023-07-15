@@ -1,0 +1,21 @@
+//@run-rustfix
+#![feature(rustc_private)]
+#![allow(unused)]
+#![warn(clippy::derive_more_display)]
+
+extern crate derive_more;
+
+mod x {
+    
+
+    struct X {}
+
+    #[derive(derive_more::Display)]
+#[display("{:?}, world {}", "self.first", "self.second.0")]
+struct Type {
+        first: usize,
+        second: (usize, usize),
+    }
+}
+
+fn main() {}

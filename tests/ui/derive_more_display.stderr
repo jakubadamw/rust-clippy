@@ -1,0 +1,21 @@
+error: this `impl` can be derived
+  --> $DIR/derive_more_display.rs:9:5
+   |
+LL | /     impl std::fmt::Display for Type {
+LL | |         fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+LL | |             write!(f, "{:?}, world {}", self.first, self.second.0)
+LL | |         }
+LL | |     }
+   | |_____^
+   |
+   = note: `-D clippy::derive-more-display` implied by `-D warnings`
+   = help: remove the manual implementation...
+help: ...and instead derive it...
+   |
+LL ~     #[derive(derive_more::Display)]
+LL + #[display("{:?}, world {}", "self.first", "self.second.0")]
+LL |     struct Type {
+   |
+
+error: aborting due to previous error
+
